@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "YOUR_POSTMAN_COLLECTION_ID",
+		"name": "ethereum-python-flask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"description": "Coleção Postman para testar o projeto ethereum-python-flask"
+	},
+	"item": [
+		{
+			"name": "Geração de Endereços",
+			"item": [
+				{
+					"name": "Gerar Endereços",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"num_addresses\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addresses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses"
+							]
+						},
+						"description": "Gera um ou mais novos endereços Ethereum e suas chaves privadas, armazenando-os no banco de dados."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Endereços",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/addresses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses"
+							]
+						},
+						"description": "Retorna a lista de todos os endereços Ethereum gerados e armazenados."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Validação de Transações",
+			"item": [
+				{
+					"name": "Validar Transação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tx_hash\": \"0x123abc...\" \n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transactions/validations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions/validations"
+							]
+						},
+						"description": "Valida uma transação Ethereum (ETH ou ERC-20) pelo seu hash, verificando sua segurança para fins de crédito (confirmações, status, destino)."
+					},
+					"response": []
+				},
+				{
+					"name": "Histórico de Transações Validadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transactions/validations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions/validations"
+							]
+						},
+						"description": "Retorna o histórico de transações que foram validadas como seguras para crédito."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Criação de Transações",
+			"item": [
+				{
+					"name": "Criar Transação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"from_address\": \"0xOurAddress\",\n    \"to_address\": \"0xRecipientAddress\",\n    \"asset\": \"ETH\", \n    \"value\": \"0.1\" \n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transactions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							]
+						},
+						"description": "Cria e envia uma transação de ETH ou token ERC-20 para a rede Ethereum. A chave privada do `from_address` deve estar armazenada na aplicação."
+					},
+					"response": []
+				},
+				{
+					"name": "Histórico de Transações Criadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transactions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							]
+						},
+						"description": "Retorna o histórico de transações que foram criadas e enviadas pela aplicação."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Status da Transação",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transactions/:tx_hash",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions",
+								":tx_hash"
+							],
+							"variable": [
+								{
+									"key": "tx_hash",
+									"value": "0xdef456...",
+									"description": "Hash da transação a ser atualizada."
+								}
+							]
+						},
+						"description": "Atualiza o status de uma transação criada pela aplicação, verificando seu status na blockchain (confirmada, falha)."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		}
+	]
+}
+
