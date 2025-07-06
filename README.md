@@ -166,7 +166,7 @@ Todos os endpoints retornam JSON.
         ]
         ```
 
-#### Criação de Transações
+#### Transações
 
 *   **`POST /transactions`**
     *   **Descrição**: Cria e envia uma transação de ETH ou token ERC-20 para a rede Ethereum. A chave privada do `from_address` deve estar armazenada na aplicação.
@@ -207,6 +207,17 @@ Todos os endpoints retornam JSON.
                 "created_at": "2023-10-27T10:10:00.000Z"
             }
         ]
+        ```
+        
+*   **`PATCH /transactions/<tx_hash>`**
+    *   **Descrição**: Atualiza o status de uma transação criada pela aplicação, verificando seu status na blockchain (confirmada, falha).
+    *   **Parâmetro de URL**: `tx_hash` (hash da transação)
+    *   **Exemplo de Resposta (Sucesso)**:
+        ```json
+        {
+            "status": "success",
+            "message": "Status da transação 0xdef456... atualizado para confirmed."
+        }
         ```
 
 #### Validação de Transações
@@ -251,17 +262,6 @@ Todos os endpoints retornam JSON.
                 "created_at": "2023-10-27T10:05:00.000Z"
             }
         ]
-        ```
-
-*   **`PATCH /transactions/<tx_hash>`**
-    *   **Descrição**: Atualiza o status de uma transação criada pela aplicação, verificando seu status na blockchain (confirmada, falha).
-    *   **Parâmetro de URL**: `tx_hash` (hash da transação)
-    *   **Exemplo de Resposta (Sucesso)**:
-        ```json
-        {
-            "status": "success",
-            "message": "Status da transação 0xdef456... atualizado para confirmed."
-        }
         ```
 
 ## Boas Práticas de Segurança
