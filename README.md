@@ -127,7 +127,7 @@ Para importar a coleção no Postman:
 2. Clique em "Import" no canto superior esquerdo
 3. Selecione o arquivo `postman-collection.json`
 4. Agora você pode executar as requisições pré-configuradas para testar a API
-5. Você precisará de ETH para isto crie uma carteira em seguida utilize um faucet para receber fundos: `https://cloud.google.com/application/web3/faucet/ethereum/sepolia`
+5. Você precisará de ETH, para realizar transações, para conseguir fundos crie uma carteira em seguida utilize um faucet para receber: `https://cloud.google.com/application/web3/faucet/ethereum/sepolia`
 
 ### Endpoints da API
 
