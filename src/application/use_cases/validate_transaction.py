@@ -75,7 +75,7 @@ class ValidateTransactionUseCase:
         transfers: List[TransferDetail] = []
 
         # Identificar se é tx de ETH ou token ERC-20
-        if tx_details.get("value", 0) > 0 and not tx_details.get("input", "").startswith("0x"): # Transação ETH simples
+        if tx_details.get("value", 0) > 0 and not tx_details.get("input", b"").startswith(b"0x"): # Transação ETH simples
             transfers.append(
                 TransferDetail(
                     asset="ETH",
