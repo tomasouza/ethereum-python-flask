@@ -86,9 +86,6 @@ def initialize_transaction_creation_controller(create_transaction_use_case: Crea
         para executar a lógica de atualização e retorna a resposta formatada em JSON.
         """
 
-        data = request.get_json()
-        transaction_status = data.get("transaction_status")
-
         try:
             updated_tx = update_transaction_status_use_case.execute(tx_hash)
             return jsonify(

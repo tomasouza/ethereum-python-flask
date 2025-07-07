@@ -77,9 +77,11 @@ class CreateTransactionUseCase:
 
         # Cria e envia a transação via serviço de blockchain (SRP).
         # O caso de uso não se preocupa com os detalhes de como a transação é assinada ou enviada.
-        tx_hash, tx_details = self.blockchain_service.create_and_sign_transaction(
+        signed_raw_transacion, tx_details = self.blockchain_service.create_and_sign_transaction(
             from_address, to_address, asset, value, private_key
         )
+
+        tx_hash = self.blockchain_service.send_raw_transaction(signed_raw_transacion)
 
         # Atualiza o hash da transação e detalhes de gás no banco de dados.
         # A responsabilidade de atualização é do repositório (SRP).

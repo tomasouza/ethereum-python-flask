@@ -278,7 +278,7 @@ class Web3BlockchainService(IBlockchainService):
             transaction["value"] = 0
 
         signed_transaction = self.w3.eth.account.sign_transaction(transaction, private_key)
-        return signed_transaction.rawTransaction.hex(), transaction # Retorna o raw_tx_hex e os detalhes da transação
+        return signed_transaction.raw_transaction, transaction # Retorna o raw_tx_hex e os detalhes da transação
 
     def send_raw_transaction(self, raw_tx: str) -> str:
         """Envia uma transação bruta assinada para a rede Ethereum.
